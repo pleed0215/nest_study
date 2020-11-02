@@ -78,3 +78,68 @@ export class AppController {
 ## 6. NotFoundException()
 
 - http 404 같은 것..
+
+## 7. DTO Data Transfer Object
+
+- dto folder를 먼저 만듬.
+- dto 자체는 그냥 data transfer validation을 위한 object, class임.
+
+```js
+export class CreateMovieDto {
+  @IsString()
+  readonly title: string;
+  @IsNumber()
+  readonly year: number;
+  @IsString({ each: true })
+  readonly genres: string[];
+}
+export class UpdateMovieDto {
+  @IsString()
+  readonly title?: string;
+  @IsNumber()
+  readonly year?: number;
+  @IsString({ each: true })
+  readonly genres?: string[];
+}
+// ?는 required가 아니라는 의미.
+```
+
+- UpdatedMovieDto는 위와 같이 하는 대신에
+- 11에서 설치할 @nestjs/mapped-types 설치 후에 PartialType 이용해서 하는 방법도 있다.
+
+## 8. useGlobalPipes
+
+```js
+app.useGlobalPipes(
+  new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
+  }),
+);
+```
+
+-
+
+## 9. class-validator
+
+## 10. class-transformer
+
+## 11. @nestjs/mapped-types
+
+## 12. generate module
+
+- nest g mo
+- 모듈 단위로 만드는게 좋은 방법이라, 모듈화를 한다고 함.
+- nestjs는 프레임워크이므로 사용방법을 알아야 하는 것.
+- 이런 모듈화 이용이 권장되는 것.
+
+## 13. Dependecy inject
+
+- @Injectable()
+- nest dependency 때문임. 이를테면 controller에서 privder를 import하지 않고 type만 지정해도 작동을 하는데, 그 이유임.
+
+## 14. @Req, @Res
+
+- express 위에서 돌아가기 때문에 request, response를 사용할 수 있다.
+- 사용을 그닥 추천하지는 않는다 함.
