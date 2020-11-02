@@ -143,3 +143,5 @@ app.useGlobalPipes(
 
 - express 위에서 돌아가기 때문에 request, response를 사용할 수 있다.
 - 사용을 그닥 추천하지는 않는다 함.
+
+# 3. Unit testing
