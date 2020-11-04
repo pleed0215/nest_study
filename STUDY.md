@@ -145,3 +145,13 @@ app.useGlobalPipes(
 - 사용을 그닥 추천하지는 않는다 함.
 
 # 3. Unit testing
+
+testing 에서 중요한 내용은 없고 어떻게 사용하는지만 대충 알면 될 듯하구.
+beforeEach, beforeAll은 알아 둬야 겠다..
+
+- 일단은 에러가 발생한다.
+- /movies/:id에서 테스팅 서버가 아니라 어플리케이션 서버에서는 :id가 number 타입인 반면에..
+- 테스팅 서버에서는 :id가 string으로 보인다.
+- 왜냐하면 main.ts에서 validate 관련 pipe line을 넘겼는데, 테스트 서버에서는 안 넘겼기 때문에..
+
+그래서 pipe라인을 validation pipe line을 추가해주면 되는 것이다.
